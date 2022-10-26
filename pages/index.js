@@ -1,13 +1,12 @@
-import Head from 'next/head'
-import Image from 'next/image'
-import styles from '../styles/Home.module.css'
-import Banner from './../components/Banner';
+import Head from "next/head";
+import Image from "next/image";
+import styles from "../styles/Home.module.css";
+import Banner from "./../components/Banner";
 
 export default function Home() {
-
   const handleOnButtonClick = () => {
-    console.log('Clicked');
-  }
+    console.log("Clicked");
+  };
 
   return (
     <div className={styles.container}>
@@ -18,12 +17,18 @@ export default function Home() {
       </Head>
 
       <main className={styles.main}>
-        <Banner onClick={handleOnButtonClick} buttonText="Find coffee stores"/>
+        <Banner onClick={handleOnButtonClick} buttonText="Find coffee stores" />
+        <div className={styles.heroImage}>
+          <Image
+            src="/images/hero-image.png"
+            width={700}
+            height={400}
+            alt="hero"
+          />
+        </div>
       </main>
 
-      <footer className={styles.footer}>
-
-      </footer>
+      <footer className={styles.footer}></footer>
     </div>
-  )
+  );
 }
