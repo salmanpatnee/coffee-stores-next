@@ -2,8 +2,16 @@ import Head from "next/head";
 import Image from "next/image";
 import styles from "../styles/Home.module.css";
 import Banner from "./../components/Banner";
+import Card from "./../components/Card";
+import coffeeStoresData from "../data/coffee-stores.json";
 
-export default function Home() {
+export async function getStaticProps(context) {
+  return {
+    props: { coffeeStores: coffeeStoresData },
+  };
+}
+
+export default function Home({coffeeStores}) {
   const handleOnButtonClick = () => {
     console.log("Clicked");
   };
@@ -26,6 +34,24 @@ export default function Home() {
             alt="hero"
           />
         </div>
+        {coffeeStores.length && (
+          <div className={styles.sectionWrapper}>
+            <h2 className={styles.heading2}>Coffee Stores</h2>
+            <div className={styles.cardLayout}>
+              {coffeeStores.map((coffeeStore) => {
+                return (
+                  <Card
+                    name={coffeeStore.name}
+                    imageUrl={coffeeStore.imgUrl}
+                    href={`/coffee-stores/${coffeeStore.id}`}
+                    className={styles.card}
+                    key={coffeeStore.id}
+                  />
+                );
+              })}
+            </div>
+          </div>
+        )}
       </main>
 
       <footer className={styles.footer}></footer>
