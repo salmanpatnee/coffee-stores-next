@@ -5,7 +5,7 @@ import Banner from "./../components/Banner";
 import Card from "./../components/Card";
 import coffeeStoresData from "../data/coffee-stores.json";
 
-export async function getStaticProps(context) {
+export async function getStaticProps() {
   return {
     props: { coffeeStores: coffeeStoresData },
   };
